@@ -61,11 +61,7 @@ contract DegenToken is ERC20, Ownable, ERC20Burnable {
 
     require(balanceOf(msg.sender) >= cost, "Insufficient Degen Tokens to buy the item");
 
-    // Burn Tokens.
+    // Burn Tokens
     _burn(msg.sender, cost);
 }
 }
-
-
-
-
