@@ -17,37 +17,36 @@ contract DegenToken is ERC20, Ownable, ERC20Burnable {
         _mint(to, amount);
     }
 
-// Checking token balance: Players should be able to check their token balance at any time.
+    //Players should be able to check their token balance at any time. (Check balance)
     function getBalance() external view returns (uint256) {
         return balanceOf(msg.sender);
     }
 
-    // Transferring tokens: Players should be able to transfer their tokens to others.
+    // Players should be able to transfer their tokens to other players. ( Transferring tokens)
     function transferTokens(address receiver, uint256 amount) external {
         require(amount > 0, "Amount must be greater than zero");
         require(balanceOf(msg.sender) >= amount, "Insufficient Degen Tokens");
         _transfer(msg.sender, receiver, amount);
     }
 
-    // Burning tokens: Anyone should be able to burn tokens, that they own, that are no longer needed.
+    // Any player should be able to burn tokens (that they own) and that are no longer needed. (Burning tokens) 
     function burnTokens(uint256 amount) external {
         require(amount > 0, "Amount must be greater than zero");
         _burn(msg.sender, amount);
     }
 
-    // Displaying NFT items: Display three NFT items in the game store.
+    // Display three NFT items in the game store. (Displaying the NFTs)
 
     function displayNFTItems() external pure returns (string memory, string memory, string memory) {
-        // TODO: Replace with actual NFT item details.
-        return ("Degen Tshirt", "Degen Bag", "Degen Poster");
+        return ("Degen T-shirt", "Degen Bag", "Degen Poster");
     }
 
 
   function buyNFTItems(uint256 itemNumber) external {
     require(itemNumber >= 0 && itemNumber <= 2, "Invalid item number");
 
-    // TODO: Implement logic to handle the purchase and burn tokens accordingly.
-    // For now, let's assume each item costs 10 tokens.
+    // Implement logic to handle the purchase and burn tokens accordingly.
+    // Let us assume each item costs 10.
     uint256 cost; 
 
     if (itemNumber == 0) {
@@ -62,11 +61,7 @@ contract DegenToken is ERC20, Ownable, ERC20Burnable {
 
     require(balanceOf(msg.sender) >= cost, "Insufficient Degen Tokens to buy the item");
 
-    // Burn tokens
+    // Burn Tokens.
     _burn(msg.sender, cost);
 }
 }
-
-
-
-
