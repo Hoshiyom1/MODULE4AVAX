@@ -22,7 +22,7 @@ contract DegenToken is ERC20, Ownable, ERC20Burnable {
         return balanceOf(msg.sender);
     }
 
-    // Players should be able to transfer their tokens to other players. ( Transferring tokens)
+    // Players should be able to transfer their tokens. ( Transferring tokens)
     function transferTokens(address receiver, uint256 amount) external {
         require(amount > 0, "Amount must be greater than zero");
         require(balanceOf(msg.sender) >= amount, "Insufficient Degen Tokens");
@@ -46,15 +46,15 @@ contract DegenToken is ERC20, Ownable, ERC20Burnable {
     require(itemNumber >= 0 && itemNumber <= 2, "Invalid item number");
 
     // Implement logic to handle the purchase and burn tokens accordingly.
-    // Let us assume each item costs 10.
+    // I'll make the item cost starting from 50 and goes up to 70.
     uint256 cost; 
 
     if (itemNumber == 0) {
-        cost = 10;
+        cost = 50;
     } else if (itemNumber == 1) {
-        cost = 20;
+        cost = 60;
     } else if (itemNumber == 2) {
-        cost = 30;
+        cost = 70;
     } else {
         revert("Invalid item number");
     }
@@ -65,3 +65,7 @@ contract DegenToken is ERC20, Ownable, ERC20Burnable {
     _burn(msg.sender, cost);
 }
 }
+
+
+
+
